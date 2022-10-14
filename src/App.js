@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const firstBook = {
+  title: 'Dietro le quinte della storia. La vita quotidiana attraverso il tempo',
+  imageSrc: "https://m.media-amazon.com/images/I/81jmLF0rPjL._AC_UL320_.jpg",
+  author: 'Piero Angela e Alessandro Barbero',
+  price: '11.40$'
+
 }
 
-export default App;
+const Book = ({book, children}) => {
+  const {imageSrc, title, author, price} = book;
+  return (
+    
+    <article className='book'>
+      <img src={imageSrc} alt='book'/>
+      <h4>{title}</h4>
+      <h6>{author}</h6>
+      <p>{price}</p>
+      {children}
+    </article>
+  )
+}
+
+const BookList = () => {
+  return (
+  <>
+    <Book book={firstBook}><h1>Primo libro</h1></Book>
+    <Book book={firstBook}><h1>Secondo libro</h1></Book>
+  </>
+  )
+}
+
+const app = () => {
+  return (
+   <BookList/>
+  )
+}
+
+export default app
